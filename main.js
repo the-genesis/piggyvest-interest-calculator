@@ -41,7 +41,7 @@ function calculateInterest() {
 		days = '91days - 2 years'
 	}
 
-	if(isNaN(amount) || amount == "0" || amount == "") {
+	if(isNaN(amount) || amount <= "0" || amount == "") {
 		error.textContent = "Please enter a valid amount";
 	}
 
@@ -58,7 +58,7 @@ function calculateInterest() {
 		welcome.textContent = `At the end ${days}, your interest will be`
 		interestText.textContent = interested;
 		balanceText.textContent = balanced;
-		safelock.textContent = "SAFELOCK " + amount + " NOW!!";
+		safelock.textContent = "SAFELOCK " + 'N' + amount + " NOW!!";
 
 
 		console.log(amount);
