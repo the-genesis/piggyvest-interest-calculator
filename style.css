@@ -193,6 +193,14 @@ option {
 .btn:hover {
 	background-color: #083E9E;
 }
+/* removed outline from the button on focus*/
+.btn:focus{
+	outline:none;
+}
+/* centered the error message to the center */
+#error{
+	text-align:center;
+}
 
 input:focus {
 	border: none;
