@@ -235,5 +235,32 @@ select:focus {
     
     .result-div {
     	position: fixed;
-    }
+		}
+	/* My changes */
+	
+		
+		body{
+			display:flex;
+			height:100vh;
+			align-items: center;
+		}
+		.form-div{
+			width:95%;
+			
+			margin:auto;
+			border-radius:6px;
+		}
+		
+}
+@media only screen and (max-width:367px){
+	.btn{
+		width:100%;
+		font-size:14px;
+		padding:0.8rem 1rem;
+	}
+}
+@media only screen and (max-width:336px){
+	.btn{
+		font-size:11px;
+	}
 }
