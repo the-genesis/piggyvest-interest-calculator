@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PiggyVest | Interest Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" href="assets/favicon.webp" type="image/webp"/>
+	<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="overlay"></div>
+	<div class="form-div">
+		<div class="close-div">
+			<img class="close" src="assets/close-icon.svg">
+		</div>
+		<div class="header">
+			<h3>Calculate interest</h3>
+			<p class="welcome">Find out how much you’ll have after 
+				investment</p>
+		</div>
+
+		<form>
+			<div class="input-container">
+				<label>Amount to lock</label><br>
+				<input id="amount" type="text" placeholder="e.g., 2500">
+			</div>
+
+			<div class="input-container">
+				<label>Duration</label><br>
+				<select id="duration" name="duration">						
+					<option value="0">Select duration of lock</option>
+					<option value="1">10 - 30 days</option>
+					<option value="2">31 - 60 days</option>
+					<option value="3">61 - 90 days</option>
+					<option value="4">91 - 2 years</option>
+				</select>
+			</div>
+
+			<!--			
+			<div class="input-container">
+				<label>Payback date</label><br>
+				<select id="payback-date">
+					<option value="0">Select date</option>
+					<option value="1">Facebook</option>
+					<option value="2">Twitter</option>
+					<option value="3">Instagram</option>
+					<option value="4">Friend/Family/Coworker Referral</option>
+					<option value="5">Google search</option>
+					<option value="6">Google playstore</option>
+					<option value="7">Online Blog</option>
+					<option value="8">Local Newspaper</option>
+					<option value="9">At an event</option>
+					<option value="10">Other</option>
+				</select>
+			</div>
+		-->
+		</form>
+
+		<button id="calculate" class="btn">CALCULATE INTEREST</button>
+		<p id="error"></p>
+	</div>
+
+	
+
+	
+
+
+
+	<div class="form-div result-div">
+		<div class="close-div active">
+			<img class="close" src="assets/close-icon.svg">
+		</div>
+		<div class="header">
+			<h3>Your interest</h3>
+			<p class="welcome result-detail">At the end of your chosen duration, your interest will be </p>
+			<h3 id="interest"></h3>
+			<p class="welcome result-detail">And your total balance will be </p>
+			<h3 id="balance"></h3>
+		</div>
+
+		
+
+		<button id="safelock" class="btn"></button>
+
+		<script type="text/javascript" src="main.js"></script>
+	</div>
+</body>
+</html>
