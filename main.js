@@ -187,6 +187,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			  savings.textContent=dailyAmount;
 			  targetResult.classList.add("visible");
 			  targetResult.classList.remove("hidden");
+			  saveNow.textContent = "SAVE N" + target + " NOW!";
 			 }
 			 
 			    else if (savingFreq===2){
@@ -200,6 +201,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 					savings.textContent=monthlyAmount;
 				    targetResult.classList.add("visible");
 			        targetResult.classList.remove("hidden");
+			        saveNow.textContent = "SAVE N" + target + " NOW!";
 				 }
 
 			 }
