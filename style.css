@@ -64,7 +64,15 @@ h3 {
 	margin: 0px;
 }
 
-.form-div {
+.calculator {
+	z-index: 998;
+}
+
+.results {
+	z-index: 999;
+}
+
+.sidebar {
 	background-color: #ffffff;
 	border: 0px solid #ffffff;
 	border-radius: 0px;
@@ -74,14 +82,13 @@ h3 {
     right: 0%;
     top: 0%;
     height: 100%;
+    transition: all .3s ease-in-out;
 }
 
-.result-div {
+.hidden {
 	transform: translateX(100%);
 	overflow-x: hidden;
-	transition: all .3s ease-in-out;
 	display: block;
-	z-index: 999;
 }
 
 .visible {
@@ -93,7 +100,7 @@ h3 {
 	width: 100%;
 	padding: 20px 40px 16px 40px;
 	background-color: #2295F2;
-	border: 0px solid #2295F2;
+	border: 2px solid #2295F2;
 	border-radius: 12px 12px 12px 0px;
 	color: #ffffff;
 	font-family: "Josefin Sans", sans-serif;
@@ -108,6 +115,11 @@ h3 {
 .safelock {
 	font-size: 18px;
 	font-weight: 700;
+}
+
+.selectors {
+	margin: 24px 0px;
+	height: 20vh;
 }
 
 select {
@@ -181,17 +193,62 @@ option {
 	font-family: "Karla", sans-serif;
 	font-weight: 700;
 	font-size: 48px;
-	margin: 48px 0;
+	margin: 40px 0;
+	width: 100%;
+	overflow-wrap: break-word ;
 }
 
 .result-detail {
 	margin-top: 16px;
 }
 
+.btn-alt {
+	background-color: white;
+	color: #2295F2;
+	border: 2px solid #2295F2;
+	margin-top: 16px;
+}
+
+.social {
+	background-image: url(./assets/twitter-logo-blue.svg);
+    background-size: 20px;
+	background-repeat: no-repeat;
+    background-position-x: 24px;
+    background-position-y: center;
+}
+
+#download {
+	margin-top: 24px;
+	color: #2295F2;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+
 /*Styling hover and focus states*/
 
 .btn:hover {
 	background-color: #083E9E;
+	border: 2px solid #083E9E;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+.btn-alt:hover {
+	background-color: #083E9E;
+	color: white;
+	border: 2px solid #083E9E;
+	margin-top: 16px;
+}
+
+.social:hover {
+	background-image: url(./assets/twitter-logo-white.svg);
+}
+
+#download:hover {
+	color: #083E9E;
 }
 
 input:focus {
@@ -212,20 +269,34 @@ select:focus {
 	body {
 		background-image: none;
 		background-size: contain;
+		
+		width: 100%;
 	}
 
-	.form-div, .result-div {
+	.sidebar {
 	    background-color: #ffffff;
 	    border: 0px solid #ffffff;
 	    border-radius: 0px;
 	    padding: 40px 40px 48px 40px;
 	    width: 100%;
-	    height: 100%;
+	    height: unset;
 	    position: relative;
-        height: 100%;
+        top: 0%;
+        left: 0%;
     }
-    
-    .result-div {
-    	position: fixed;
+
+    .hidden {
+        position: fixed;
+        overflow-x: hidden;
     }
+
+    .visible {
+    	position: absolute;
+    	overflow-x: hidden;
+    }
+
+    #calculate {
+	    margin-top: 16px;
+    }
+
 }
