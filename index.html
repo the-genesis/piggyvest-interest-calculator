@@ -10,9 +10,26 @@
 </head>
 <body>
 	<div class="overlay"></div>
-	<div class="form-div">
+
+	<div id="choice-selection" class="sidebar">
 		<div class="close-div">
 			<img class="close" src="assets/close-icon.svg">
+		</div>
+
+		<div class="header">
+			<h3>Select a function</h3>
+			<p class="welcome">What would you like to do?</p>
+		</div>
+
+		<button id="interest-selector" class="btn selectors">CALCULATE INTEREST</button>
+		<button id="target-selector" class="btn selectors btn-alt">CALCULATE TARGET</button>
+	</div>
+
+	<!-- Interest calculator -->
+
+	<div id="interest-calculator" class="sidebar calculator hidden">
+		<div class="close-div">
+			<img id="close-calculator" class="close active" src="assets/close-icon.svg">
 		</div>
 		<div class="header">
 			<h3>Calculate interest</h3>
@@ -61,15 +78,13 @@
 		<p id="error"></p>
 	</div>
 
-	
 
-	
-
+	<!-- Interest calculator result -->
 
 
-	<div class="form-div result-div">
-		<div class="close-div active">
-			<img class="close" src="assets/close-icon.svg">
+	<div id="interest-result" class="sidebar results hidden">
+		<div class="close-dive">
+			<img id="close-result" class="close active" src="assets/close-icon.svg">
 		</div>
 		<div class="header">
 			<h3>Your interest</h3>
@@ -79,11 +94,77 @@
 			<h3 id="balance"></h3>
 		</div>
 
-		
-
 		<button id="safelock" class="btn"></button>
-
-		<script type="text/javascript" src="main.js"></script>
+		<button id="social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		<a id="download" class="welcome download">Download your report</a>
 	</div>
+
+
+	<!-- Target calculator -->
+
+
+	<div id="target-calculator" class="sidebar calculator hidden">
+		<div class="close-div">
+			<img id="close-target" class="close active" src="assets/close-icon.svg">
+		</div>
+		<div class="header">
+			<h3>Target Calculator</h3>
+			<p class="welcome">Find out how much you’ll have to save monthly/daily to have a specific amount by a certain date</p>
+		</div>
+
+		<form>
+			<div class="input-container">
+				<label>What’s your target?</label><br>
+				<input id="target-amount" type="text" placeholder="e.g., 2500">
+			</div>
+
+			<div class="input-container">
+				<label>How often do you want to save?</label><br>
+				<select id="target-frequency" name="duration">						
+					<option value="0">Daily or monthly?</option>
+					<option value="1">Daily</option>
+					<option value="2">Monthly</option>
+				</select>
+			</div>
+
+			<div class="input-container">
+				<label>When do you want to cash out?</label><br>
+				<select id="target-date" name="duration">						
+					<option value="0">Select date</option>
+				</select>
+			</div>
+		</form>
+
+		<button id="calculate-target" class="btn">CALCULATE TARGET</button>
+		<p id="target-error"></p>
+	</div>
+
+
+	<!-- Target calculator result -->
+
+
+	<div id="target-result" class="sidebar results hidden">
+		<div class="close-dive">
+			<img id="close-target-result" class="close active" src="assets/close-icon.svg">
+		</div>
+		<div class="header">
+			<h3>Your result</h3>
+			<p class="welcome result-detail">You need to dailly save </p>
+			<h3 id="savings"></h3>
+			<p class="welcome result-detail">...in order to have </p>
+			<h3 id="goal"></h3>
+			<p id="date" class="welcome result-detail">in </p>
+		</div>
+
+		<button id="save" class="btn"></button>
+		<a id="social-link" href="" target="_blank">
+			<button id="target-social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		</a>
+		<a id="target-download" class="welcome download">Download your report</a>
+	</div>
+
+
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="filesaver.js"></script>
 </body>
 </html>
