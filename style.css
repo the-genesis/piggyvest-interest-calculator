@@ -188,7 +188,8 @@ option {
 	cursor: pointer;
 }
 
-#interest, #balance {
+#interest, #balance,
+#savings, #goal {
 	color: #083E9E;
 	font-family: "Karla", sans-serif;
 	font-weight: 700;
@@ -217,7 +218,7 @@ option {
     background-position-y: center;
 }
 
-#download {
+.download {
 	background-image: url(./assets/download-icon-blue.svg);
     background-size: 20px;
 	background-repeat: no-repeat;
@@ -247,7 +248,7 @@ option {
 	background-image: url(./assets/twitter-logo-white.svg);
 }
 
-#download:hover {
+.download:hover {
 	background-image: url(./assets/download-icon-white.svg);
 }
 

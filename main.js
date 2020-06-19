@@ -85,7 +85,7 @@ function calculateInterest() {
 	}
 }
 
-//share to social media
+//share interest calculator to social media
 var social = document.getElementById("social");
 social.addEventListener("click", shareToTwitter);
 
@@ -101,8 +101,7 @@ function shareToTwitter() {
 	
 	socialLink.setAttribute("href", tweet);
 	socialLink.click();
-}
-
+} 
 var download = document.getElementById("download");
 download.addEventListener("click", saveReport);
 
@@ -135,21 +134,8 @@ var goal = document.getElementById("goal");
 var date = document.getElementById("date");
 var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
-var currentDate=new Date();
-function formatDate(date){
-	var day = date.getDate();
-	var month = date.getMonth() + 1; 
-	var year = date.getFullYear();
-	if(day<10){
-         day="0"+day;
-	}
-	if(month<10){
-        month="0"+month
-	}
-	var dateAlt=year + "-" + month + "-" + day;
-	return dateAlt;
-}
-targetDate.setAttribute("min",formatDate(currentDate));
+var currentDate=new Date();  
+
 
 //slide in target calculator
 targetSelector.addEventListener("click", function() {
@@ -194,12 +180,13 @@ closetargetResult.addEventListener("click", closetargetOutput);
                 targeterror.textContent="Enter a valid amount"
 			 }
 			 
-			 else if(savingFreq===1){
+			 if(savingFreq===1){
 			  sf.textContent="You need to save daily";
 			  targeterror.textContent="";
 			  savings.textContent=dailyAmount;
 			  targetResult.classList.add("visible");
 			  targetResult.classList.remove("hidden");
+			  saveNow.textContent = "SAVE N" + target + " NOW!";
 			 }
 			 
 			    else if (savingFreq===2){
@@ -213,6 +200,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 					savings.textContent=monthlyAmount;
 				    targetResult.classList.add("visible");
 			        targetResult.classList.remove("hidden");
+			        saveNow.textContent = "SAVE N" + target + " NOW!";
 				 }
 
 			 }
@@ -221,5 +209,38 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 }
 }
 
+// share target calculator to twitter
+var targetSocial = document.getElementById("target-social");
+targetSocial.addEventListener("click", shareTargetToTwitter);
+
+var targetSocialLink = document.getElementById("target-social-link");
+
+function shareTargetToTwitter() {
+	var shareTarget = parseInt(targetAmount.value);
+	var tweet = "";
+
+	if(operation == "target calculation") {
+		tweet = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fthe-genesis.github.io%2Fpiggyvest-interest-calculator&text=I%20just%20did%20my%20target%20savings%20calculations%20with%20@piggyvest.%20Turns%20out%20I%20have%20to%20save%20N"+savings.textContent+"%20"+targetFrequency.options[parseInt(targetFrequency.value)].textContent+"%20to%20make%20N"+shareTarget+"%21%20Check%20yours%20here%3A%20&hashtags=savings%2Cpiggyvest"
+	}
+	
+	targetSocialLink.setAttribute("href", tweet);
+	targetSocialLink.click();
+}
+
+// Download target saving report
+
+
+var downloadTarget = document.getElementById("target-download");
+downloadTarget.addEventListener("click", saveTargetReport);
+
+function saveTargetReport() {
+	var amount = parseInt(input.value);
+	var shareTarget = parseInt(targetAmount.value);
+
+    var report = "In order to save up to N"+shareTarget+" "+date.textContent+", you'll have to save "+savings.textContent+" with PiggyVest, on a "+targetFrequency.options[parseInt(targetFrequency.value)].textContent+" basis. You should save now!!";
+			
+    var blob = new Blob([report], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "target-savings-report.txt");
+}
 
 

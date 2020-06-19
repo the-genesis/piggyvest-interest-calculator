@@ -42,7 +42,7 @@
 		<form>
 			<div class="input-container">
 				<label>Amount to lock</label><br>
-				<input id="amount" type="text" placeholder="e.g., 2500">
+				<input id="amount" type="number" placeholder="e.g., 2500">
 			</div>
 
 			<div class="input-container">
@@ -97,7 +97,9 @@
 		</div>
 
 		<button id="safelock" class="btn"></button>
-		<button id="social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		<a id="target-social-link" href="" target="_blank">
+			<button id="social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		</a>
 		<button id="download" class="btn btn-alt download">DOWNLOAD REPORT</button>
 		
 	</div>
@@ -156,8 +158,8 @@
 			<p id="date" class="welcome result-detail">in </p>
 		</div>
 
-		<button id="save" class="btn">SAVE</button>
-		<a id="social-link" href="" target="_blank">
+		<button id="save" class="btn"></button>
+		<a id="target-social-link" href="" target="_blank">
 			<button id="target-social" class="btn btn-alt social">SHARE ON TWITTER</button>
 		</a>
 		<button id="target-download" class="btn btn-alt download">DOWNLOAD REPORT</button>
