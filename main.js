@@ -221,12 +221,27 @@ function shareTargetToTwitter() {
 	var tweet = "";
 
 	if(operation == "target calculation") {
-		tweet = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fthe-genesis.github.io%2Fpiggyvest-interest-calculator&text=I%20just%20did%20my%20target%20savings%20calculations%20with%20@piggyvest.%20Turns%20out%20I%20have%20to%20save%20N"+savings.value+"%20"+targetFrequency.options[parseInt(targetFrequency.value)].textContent+"%20to%20make%20N"+shareTarget+"%21%20Check%20yours%20here%3A%20&hashtags=savings%2Cpiggyvest"
+		tweet = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fthe-genesis.github.io%2Fpiggyvest-interest-calculator&text=I%20just%20did%20my%20target%20savings%20calculations%20with%20@piggyvest.%20Turns%20out%20I%20have%20to%20save%20N"+savings.textContent+"%20"+targetFrequency.options[parseInt(targetFrequency.value)].textContent+"%20to%20make%20N"+shareTarget+"%21%20Check%20yours%20here%3A%20&hashtags=savings%2Cpiggyvest"
 	}
 	
 	targetSocialLink.setAttribute("href", tweet);
-	TargetSocialLink.click();
+	targetSocialLink.click();
 }
-//
+
+// Download target saving report
+
+
+var downloadTarget = document.getElementById("target-download");
+downloadTarget.addEventListener("click", saveTargetReport);
+
+function saveTargetReport() {
+	var amount = parseInt(input.value);
+	var shareTarget = parseInt(targetAmount.value);
+
+    var report = "In order to save up to N"+shareTarget+" "+date.textContent+", you'll have to save "+savings.textContent+" with PiggyVest, on a "+targetFrequency.options[parseInt(targetFrequency.value)].textContent+" basis. You should save now!!";
+			
+    var blob = new Blob([report], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "target-savings-report.txt");
+}
 
 
