@@ -136,12 +136,25 @@ var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
 var currentDate=new Date();  
 
+   function formatDate(date){    //format date
+	day = date.getDate(),
+    month = date.getMonth()+1, 
+	year = date.getFullYear();
+	if(day<10){
+		day='0'+day
+       	} 
+     if(month<10){
+	month='0'+month
+          }
+	  var formattedDate = year+'-'+month+'-'+day;
+	  return formattedDate;
+         }
+	targetDate.setAttribute("min",formatDate(currentDate));  //set date picker min date to current date
 
 //slide in target calculator
 targetSelector.addEventListener("click", function() {
 	targetCalculator.classList.remove("hidden");
 	targetCalculator.classList.add("visible");
-
 	operation = "target calculation";
 });
 
@@ -158,7 +171,8 @@ closeTargetCalculator.addEventListener("click", function() {
 
 targetBtn.addEventListener("click", calculateTarget);
 closetargetResult.addEventListener("click", closetargetOutput);
-			 
+
+	 
    function closetargetOutput(){
 	targetResult.classList.remove("visible");
 	targetResult.classList.add("hidden");
@@ -176,11 +190,12 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 var savingFreq=parseInt(targetFrequency.value);
 			 goal.textContent=target;
 			 date.textContent="by "+formatDate(cashOutDate);
+
 			 if(isNaN(target)){
                 targeterror.textContent="Enter a valid amount"
 			 }
 			 
-			 if(savingFreq===1){
+			 else if(savingFreq===1){
 			  sf.textContent="You need to save daily";
 			  targeterror.textContent="";
 			  savings.textContent=dailyAmount;
