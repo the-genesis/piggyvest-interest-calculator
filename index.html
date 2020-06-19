@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	
 	<title>PiggyVest | Interest Calculator</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="shortcut icon" href="assets/favicon.webp" type="image/webp"/>
@@ -116,7 +118,7 @@
 		<form>
 			<div class="input-container">
 				<label>What’s your target?</label><br>
-				<input id="target-amount" type="text" placeholder="e.g., 2500">
+				<input id="target-amount" type="number" placeholder="e.g., 2500">
 			</div>
 
 			<div class="input-container">
@@ -130,14 +132,11 @@
 
 			<div class="input-container">
 				<label>When do you want to cash out?</label><br>
-				<select id="target-date" name="duration">						
-					<option value="0">Select date</option>
-				</select>
+				<input type="date" value="2020-06-19" id="target-date">
 			</div>
 		</form>
-
-		<button id="calculate-target" class="btn">CALCULATE TARGET</button>
-		<p id="target-error"></p>
+		<p id="target-error" class="error"></p>
+		<button id="calculate-target" class="btn-calc">CALCULATE TARGET</button>
 	</div>
 
 
@@ -150,14 +149,14 @@
 		</div>
 		<div class="header">
 			<h3>Your result</h3>
-			<p class="welcome result-detail">You need to dailly save </p>
+			<p class="welcome result-detail" id="sf"></p>
 			<h3 id="savings"></h3>
 			<p class="welcome result-detail">...in order to have </p>
 			<h3 id="goal"></h3>
 			<p id="date" class="welcome result-detail">in </p>
 		</div>
 
-		<button id="save" class="btn"></button>
+		<button id="save" class="btn">SAVE</button>
 		<a id="social-link" href="" target="_blank">
 			<button id="target-social" class="btn btn-alt social">SHARE ON TWITTER</button>
 		</a>

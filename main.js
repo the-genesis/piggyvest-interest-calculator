@@ -15,12 +15,13 @@ var interest = 0;
 var balance = 0;
 var operation = "";
 
+
 //slide in interest calculator
 interestSelector.addEventListener("click", function() {
 	interestCalculator.classList.remove("hidden");
 	interestCalculator.classList.add("visible");
-
 	operation = "interest calculation";
+	
 });
 
 //calculate interest on click
@@ -127,14 +128,28 @@ var targetAmount = document.getElementById("target-amount");
 var targetFrequency = document.getElementById("target-frequency");
 var targetDate = document.getElementById("target-date");
 var targetBtn = document.getElementById("calculate-target");
-var targeterror = document.getElementById("error");
-var closetargetResult = document.getElementById("close-result");
+var targeterror = document.getElementById("target-error");
+var closetargetResult = document.getElementById("close-target-result");
 var savings = document.getElementById("savings");
 var goal = document.getElementById("goal");
 var date = document.getElementById("date");
+var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
-
-
+var currentDate=new Date();
+function formatDate(date){
+	var day = date.getDate();
+	var month = date.getMonth() + 1; 
+	var year = date.getFullYear();
+	if(day<10){
+         day="0"+day;
+	}
+	if(month<10){
+        month="0"+month
+	}
+	var dateAlt=year + "-" + month + "-" + day;
+	return dateAlt;
+}
+targetDate.setAttribute("min",formatDate(currentDate));
 
 //slide in target calculator
 targetSelector.addEventListener("click", function() {
@@ -151,14 +166,59 @@ closeTargetCalculator.addEventListener("click", function() {
     targetAmount.value ="";
 	targetFrequency.value = "0";
 	targetDate.value = "0";
-
+    
 	operation = "";
 });
 
 targetBtn.addEventListener("click", calculateTarget);
+closetargetResult.addEventListener("click", closetargetOutput);
+			 
+   function closetargetOutput(){
+	targetResult.classList.remove("visible");
+	targetResult.classList.add("hidden");
+   }
 
-function calculateTarget() {
+   function calculateTarget() {
+			 var cashOutDate=new Date(targetDate.value);
+			 var dateDifference=cashOutDate - currentDate;
+			 var res = Math.abs(dateDifference) / 1000;
+			 var elapsedDays = (Math.floor(res / 86400))+1;
+			 var elapsedMonths=Math.round(elapsedDays/28);
+			 var target=parseInt(targetAmount.value);
+			 var dailyAmount=(target/elapsedDays).toFixed(2);
+			 var monthlyAmount=target/elapsedMonths;
+			 var savingFreq=parseInt(targetFrequency.value);
+			 goal.textContent=target;
+			 date.textContent="by "+formatDate(cashOutDate);
+			 if(isNaN(target)){
+                targeterror.textContent="Enter a valid amount"
+			 }
+			 
+			 else if(savingFreq===1){
+			  sf.textContent="You need to save daily";
+			  targeterror.textContent="";
+			  savings.textContent=dailyAmount;
+			  targetResult.classList.add("visible");
+			  targetResult.classList.remove("hidden");
+			 }
+			 
+			    else if (savingFreq===2){
+				 
+				 if(elapsedMonths<1){
+					 targeterror.textContent="Period is less than a month"
+				 }
+				 else{
+					sf.textContent="You need to save monthly";
+					targeterror.textContent="";
+					savings.textContent=monthlyAmount;
+				    targetResult.classList.add("visible");
+			        targetResult.classList.remove("hidden");
+				 }
 
+			 }
+			 else{
+			   targeterror.textContent="select saving frequency";
+			 }
 }
 
 
