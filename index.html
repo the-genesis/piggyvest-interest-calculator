@@ -130,14 +130,11 @@
 
 			<div class="input-container">
 				<label>When do you want to cash out?</label><br>
-				<select id="target-date" name="duration">						
-					<option value="0">Select date</option>
-				</select>
+				<input type="date" value="2020-06-19" id="target-date">
 			</div>
 		</form>
-
-		<button id="calculate-target" class="btn">CALCULATE TARGET</button>
-		<p id="target-error"></p>
+		<p id="target-error" class="error"></p>
+		<button id="calculate-target" class="btn-calc">CALCULATE TARGET</button>
 	</div>
 
 
@@ -150,7 +147,7 @@
 		</div>
 		<div class="header">
 			<h3>Your result</h3>
-			<p class="welcome result-detail">You need to dailly save </p>
+			<p class="welcome result-detail" id="sf"></p>
 			<h3 id="savings"></h3>
 			<p class="welcome result-detail">...in order to have </p>
 			<h3 id="goal"></h3>
