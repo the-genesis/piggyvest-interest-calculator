@@ -218,11 +218,11 @@ option {
 }
 
 #download {
-	margin-top: 24px;
-	color: #2295F2;
-	font-weight: 700;
-	cursor: pointer;
-	transition: all .3s ease-in-out;
+	background-image: url(./assets/download-icon-blue.svg);
+    background-size: 20px;
+	background-repeat: no-repeat;
+    background-position-x: 24px;
+    background-position-y: center;
 }
 
 /*Styling hover and focus states*/
@@ -248,7 +248,7 @@ option {
 }
 
 #download:hover {
-	color: #083E9E;
+	background-image: url(./assets/download-icon-white.svg);
 }
 
 input:focus {
