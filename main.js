@@ -128,14 +128,13 @@ var targetAmount = document.getElementById("target-amount");
 var targetFrequency = document.getElementById("target-frequency");
 var targetDate = document.getElementById("target-date");
 var targetBtn = document.getElementById("calculate-target");
-var targeterror = document.getElementById("error");
+var targeterror = document.getElementById("target-error");
 var closetargetResult = document.getElementById("close-target-result");
 var savings = document.getElementById("savings");
 var goal = document.getElementById("goal");
 var date = document.getElementById("date");
+var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
-var freqError =document.getElementById("freq-error");
-var savingFreq=document.getElementById("saving-freq");
 var currentDate=new Date();  
 
 
@@ -180,25 +179,25 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 var target=parseInt(targetAmount.value)
 			 var dailyAmount=(target/elapsedDays).toFixed(2);
 			 var monthlyAmount=target/elapsedMonths;
-			 var freq=parseInt(targetFrequency.value);
+			 var savingFreq=parseInt(targetFrequency.value);
 			 goal.textContent=target;
 			 
-			 if(freq===1){
-			  savingFreq.textContent="You need to save daily";
-			  freqError.textContent="";
+			 if(savingFreq===1){
+			  sf.textContent="You need to save daily";
+			  targeterror.textContent="";
 			  savings.textContent=dailyAmount;
 			  targetResult.classList.add("visible");
 			  targetResult.classList.remove("hidden");
 			 }
 			 
-			    else if (freq===2){
+			    else if (savingFreq===2){
 				 
 				 if(elapsedMonths<1){
-					 freqError.textContent="Period is less than a month"
+					 targeterror.textContent="Period is less than a month"
 				 }
 				 else{
-					savingFreq.textContent="You need to save monthly";
-					freqError.textContent="";
+					sf.textContent="You need to save monthly";
+					targeterror.textContent="";
 					savings.textContent=monthlyAmount;
 				    targetResult.classList.add("visible");
 			        targetResult.classList.remove("hidden");
@@ -206,7 +205,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 
 			 }
 			 else{
-			   freqError.textContent="select saving frequency";
+			   targeterror.textContent="select saving frequency";
 			 }
 }
 
