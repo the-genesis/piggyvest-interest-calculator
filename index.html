@@ -131,10 +131,6 @@
 				<label>When do you want to cash out?</label><br>
 				<select id="target-date" name="duration">						
 					<option value="0">Select date</option>
-					<option value="1">10 - 30 days</option>
-					<option value="2">31 - 60 days</option>
-					<option value="3">61 - 90 days</option>
-					<option value="4">91 - 2 years</option>
 				</select>
 			</div>
 		</form>
@@ -161,11 +157,14 @@
 		</div>
 
 		<button id="save" class="btn"></button>
-		<button id="target-social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		<a id="social-link" href="" target="_blank">
+			<button id="target-social" class="btn btn-alt social">SHARE ON TWITTER</button>
+		</a>
 		<a id="target-download" class="welcome download">Download your report</a>
 	</div>
 
 
 	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="filesaver.js"></script>
 </body>
 </html>
