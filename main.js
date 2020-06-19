@@ -133,7 +133,7 @@ var savings = document.getElementById("savings");
 var goal = document.getElementById("goal");
 var date = document.getElementById("date");
 var saveNow = document.getElementById("save");
-
+var currentDate=new Date();  
 
 
 //slide in target calculator
@@ -158,7 +158,19 @@ closeTargetCalculator.addEventListener("click", function() {
 targetBtn.addEventListener("click", calculateTarget);
 
 function calculateTarget() {
+			 var dateDifference=targetDate.value - currentDate;
+			 var res = Math.abs(dateDifference) / 1000;
+			 var elapsedDays = Math.floor(res / 86400);
+			 var dailyAmount=elapsedDays;
+			 var monthlyAmount=elapsedDays/28;
+			 var freq=targetFrequency.value;
+			 if(freq===1){
+                   
+			 }
+			 else if (freq===2){
 
+			 }
+			 else
 }
 
 
