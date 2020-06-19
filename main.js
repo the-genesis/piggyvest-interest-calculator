@@ -85,7 +85,7 @@ function calculateInterest() {
 	}
 }
 
-//share to social media
+//share interest calculator to social media
 var social = document.getElementById("social");
 social.addEventListener("click", shareToTwitter);
 
@@ -101,8 +101,7 @@ function shareToTwitter() {
 	
 	socialLink.setAttribute("href", tweet);
 	socialLink.click();
-}
-
+} 
 var download = document.getElementById("download");
 download.addEventListener("click", saveReport);
 
@@ -209,5 +208,23 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 }
 }
 
+// share target calculator to twitter
+var targetSocial = document.getElementById("target-social");
+targetSocial.addEventListener("click", shareTargetToTwitter);
+
+var targetSocialLink = document.getElementById("target-social-link");
+
+function shareTargetToTwitter() {
+	var shareTarget = parseInt(targetAmount.value);
+	var tweet = "";
+
+	if(operation == "target calculation") {
+		tweet = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fthe-genesis.github.io%2Fpiggyvest-interest-calculator&text=I%20just%20did%20my%20target%20savings%20calculations%20with%20@piggyvest.%20Turns%20out%20I%20have%20to%20save%20N"+savings.value+"%20"+targetFrequency.options[parseInt(targetFrequency.value)].textContent+"%20to%20make%20N"+shareTarget+"%21%20Check%20yours%20here%3A%20&hashtags=savings%2Cpiggyvest"
+	}
+	
+	targetSocialLink.setAttribute("href", tweet);
+	TargetSocialLink.click();
+}
+//
 
 
