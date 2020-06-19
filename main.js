@@ -11,9 +11,11 @@ var closeCalculator = document.getElementById("close-calculator");
 var closeResult = document.getElementById("close-result");
 var interestText = document.getElementById("interest");
 var balanceText = document.getElementById("balance");
+
 var interest = 0;
 var balance = 0;
 var operation = "";
+//var welcome = document.querySelector('.result-detail')
 
 //slide in interest calculator
 interestSelector.addEventListener("click", function() {
@@ -49,21 +51,25 @@ function calculateInterest() {
 	
 	
 	var rate = 1;
-	
+	let days;
 	if(duration == "1") {
 		rate = 6;
+		days = '10 - 30 days'
 	}
 	else if(duration == "2") {
 		rate = 8;
+		days = '31 - 60 days'
 	}
 	else if(duration == "3") {
 		rate = 10;
+		days = '61 - 90 days'
 	}
 	else if(duration == "4") {
 		rate = 13;
+		days = '91days - 2 years'
 	}
 
-	if(isNaN(amount) || amount == "0" || amount == "") {
+	if(isNaN(amount) || amount <= "0" || amount == "") {
 		error.textContent = "Please enter a valid amount";
 	}
 
@@ -78,6 +84,7 @@ function calculateInterest() {
 		//slide in interest result
 		interestResult.classList.remove("hidden");
 		interestResult.classList.add("visible");
+    welcome.textContent = `"At the end ${days}, your interest will be`"
 		interestText.textContent = "N" + interest;
 		balanceText.textContent = "N" + balance;
 		safelock.textContent = "SAFELOCK N" + amount + " NOW!!";
@@ -89,6 +96,7 @@ var social = document.getElementById("social");
 social.addEventListener("click", shareToTwitter);
 
 var socialLink = document.getElementById("social-link");
+
 
 function shareToTwitter() {
 	var amount = parseInt(input.value);
