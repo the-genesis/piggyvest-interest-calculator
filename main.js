@@ -135,8 +135,21 @@ var goal = document.getElementById("goal");
 var date = document.getElementById("date");
 var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
-var currentDate=new Date();  
-
+var currentDate=new Date();
+function formatDate(date){
+	var day = date.getDate();
+	var month = date.getMonth() + 1; 
+	var year = date.getFullYear();
+	if(day<10){
+         day="0"+day;
+	}
+	if(month<10){
+        month="0"+month
+	}
+	var dateAlt=year + "-" + month + "-" + day;
+	return dateAlt;
+}
+targetDate.setAttribute("min",formatDate(currentDate));
 
 //slide in target calculator
 targetSelector.addEventListener("click", function() {
@@ -166,23 +179,22 @@ closetargetResult.addEventListener("click", closetargetOutput);
    }
 
    function calculateTarget() {
-        	 var cashOutDate=new Date(targetDate.value);
-	         var day = cashOutDate.getDate();
-	         var month = cashOutDate.getMonth() + 1; 
-			 var year = cashOutDate.getFullYear();
-			 var cashoutDateAlt=day + "/" + month + "/" + year;
-			 date.textContent="by "+cashoutDateAlt;
+			 var cashOutDate=new Date(targetDate.value);
 			 var dateDifference=cashOutDate - currentDate;
 			 var res = Math.abs(dateDifference) / 1000;
 			 var elapsedDays = (Math.floor(res / 86400))+1;
 			 var elapsedMonths=Math.round(elapsedDays/28);
-			 var target=parseInt(targetAmount.value)
+			 var target=parseInt(targetAmount.value);
 			 var dailyAmount=(target/elapsedDays).toFixed(2);
 			 var monthlyAmount=target/elapsedMonths;
 			 var savingFreq=parseInt(targetFrequency.value);
 			 goal.textContent=target;
+			 date.textContent="by "+formatDate(cashOutDate);
+			 if(isNaN(target)){
+                targeterror.textContent="Enter a valid amount"
+			 }
 			 
-			 if(savingFreq===1){
+			 else if(savingFreq===1){
 			  sf.textContent="You need to save daily";
 			  targeterror.textContent="";
 			  savings.textContent=dailyAmount;
