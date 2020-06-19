@@ -15,12 +15,13 @@ var interest = 0;
 var balance = 0;
 var operation = "";
 
+
 //slide in interest calculator
 interestSelector.addEventListener("click", function() {
 	interestCalculator.classList.remove("hidden");
 	interestCalculator.classList.add("visible");
-
 	operation = "interest calculation";
+	
 });
 
 //calculate interest on click
@@ -128,11 +129,13 @@ var targetFrequency = document.getElementById("target-frequency");
 var targetDate = document.getElementById("target-date");
 var targetBtn = document.getElementById("calculate-target");
 var targeterror = document.getElementById("error");
-var closetargetResult = document.getElementById("close-result");
+var closetargetResult = document.getElementById("close-target-result");
 var savings = document.getElementById("savings");
 var goal = document.getElementById("goal");
 var date = document.getElementById("date");
 var saveNow = document.getElementById("save");
+var freqError =document.getElementById("freq-error");
+var savingFreq=document.getElementById("saving-freq");
 var currentDate=new Date();  
 
 
@@ -151,26 +154,60 @@ closeTargetCalculator.addEventListener("click", function() {
     targetAmount.value ="";
 	targetFrequency.value = "0";
 	targetDate.value = "0";
-
+    
 	operation = "";
 });
 
 targetBtn.addEventListener("click", calculateTarget);
+closetargetResult.addEventListener("click", closetargetOutput);
+			 
+   function closetargetOutput(){
+	targetResult.classList.remove("visible");
+	targetResult.classList.add("hidden");
+   }
 
-function calculateTarget() {
-			 var dateDifference=targetDate.value - currentDate;
+   function calculateTarget() {
+        	 var cashOutDate=new Date(targetDate.value);
+	         var day = cashOutDate.getDate();
+	         var month = cashOutDate.getMonth() + 1; 
+			 var year = cashOutDate.getFullYear();
+			 var cashoutDateAlt=day + "/" + month + "/" + year;
+			 date.textContent="by "+cashoutDateAlt;
+			 var dateDifference=cashOutDate - currentDate;
 			 var res = Math.abs(dateDifference) / 1000;
-			 var elapsedDays = Math.floor(res / 86400);
-			 var dailyAmount=elapsedDays;
-			 var monthlyAmount=elapsedDays/28;
-			 var freq=targetFrequency.value;
+			 var elapsedDays = (Math.floor(res / 86400))+1;
+			 var elapsedMonths=Math.round(elapsedDays/28);
+			 var target=parseInt(targetAmount.value)
+			 var dailyAmount=(target/elapsedDays).toFixed(2);
+			 var monthlyAmount=target/elapsedMonths;
+			 var freq=parseInt(targetFrequency.value);
+			 goal.textContent=target;
+			 
 			 if(freq===1){
-                   
+			  savingFreq.textContent="You need to save daily";
+			  freqError.textContent="";
+			  savings.textContent=dailyAmount;
+			  targetResult.classList.add("visible");
+			  targetResult.classList.remove("hidden");
 			 }
-			 else if (freq===2){
+			 
+			    else if (freq===2){
+				 
+				 if(elapsedMonths<1){
+					 freqError.textContent="Period is less than a month"
+				 }
+				 else{
+					savingFreq.textContent="You need to save monthly";
+					freqError.textContent="";
+					savings.textContent=monthlyAmount;
+				    targetResult.classList.add("visible");
+			        targetResult.classList.remove("hidden");
+				 }
 
 			 }
-			 else
+			 else{
+			   freqError.textContent="select saving frequency";
+			 }
 }
 
 

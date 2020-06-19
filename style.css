@@ -177,7 +177,7 @@ option {
 	padding-top: 20px;
 }
 
-#error {
+.error {
 	font-family: "Karla", sans-serif;
 	color: red;
 	font-size: 16px;
@@ -261,6 +261,19 @@ input:focus {
 
 select:focus {
 	outline: none;
+}
+.btn-calc{
+	width: 100%;
+	padding: 20px 40px 16px 40px;
+	background-color: #2295F2;
+	border: 2px solid #2295F2;
+	border-radius: 8px 8px 8px 0px;
+	color: #ffffff;
+	font-family: "Josefin Sans", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 21px;
+	cursor: pointer;
 }
 
 /* MEDIA QUERIES */
