@@ -139,6 +139,7 @@ select {
 	background-position: right;
 	background-origin: content-box;
 	background-size: 20px;
+	cursor: pointer;
 }
 
 input {

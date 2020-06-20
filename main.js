@@ -188,8 +188,8 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 var dailyAmount=(target/elapsedDays).toFixed(2);
 			 var monthlyAmount=target/elapsedMonths;
 			 var savingFreq=parseInt(targetFrequency.value);
-			 goal.textContent=target;
-			 date.textContent="by "+formatDate(cashOutDate);
+			 goal.textContent="N" + target;
+			 date.textContent="by "+ formatDate(cashOutDate);
 
 			 if(isNaN(target)){
                 targeterror.textContent="Enter a valid amount"
@@ -198,7 +198,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 			 else if(savingFreq===1){
 			  sf.textContent="You need to save daily";
 			  targeterror.textContent="";
-			  savings.textContent=dailyAmount;
+			  savings.textContent="N"+dailyAmount;
 			  targetResult.classList.add("visible");
 			  targetResult.classList.remove("hidden");
 			  saveNow.textContent = "SAVE N" + target + " NOW!";
@@ -212,7 +212,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 				 else{
 					sf.textContent="You need to save monthly";
 					targeterror.textContent="";
-					savings.textContent=monthlyAmount;
+					savings.textContent="N"+monthlyAmount;
 				    targetResult.classList.add("visible");
 			        targetResult.classList.remove("hidden");
 			        saveNow.textContent = "SAVE N" + target + " NOW!";
