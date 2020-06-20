@@ -136,12 +136,25 @@ var sf=document.getElementById("sf");
 var saveNow = document.getElementById("save");
 var currentDate=new Date();  
 
+   function formatDate(date){    //format date
+	day = date.getDate(),
+    month = date.getMonth()+1, 
+	year = date.getFullYear();
+	if(day<10){
+		day='0'+day
+       	} 
+     if(month<10){
+	month='0'+month
+          }
+	  var formattedDate = year+'-'+month+'-'+day;
+	  return formattedDate;
+         }
+	targetDate.setAttribute("min",formatDate(currentDate));  //set date picker min date to current date
 
 //slide in target calculator
 targetSelector.addEventListener("click", function() {
 	targetCalculator.classList.remove("hidden");
 	targetCalculator.classList.add("visible");
-
 	operation = "target calculation";
 });
 
@@ -158,33 +171,34 @@ closeTargetCalculator.addEventListener("click", function() {
 
 targetBtn.addEventListener("click", calculateTarget);
 closetargetResult.addEventListener("click", closetargetOutput);
-			 
+
+	 
    function closetargetOutput(){
 	targetResult.classList.remove("visible");
 	targetResult.classList.add("hidden");
    }
 
    function calculateTarget() {
-        	 var cashOutDate=new Date(targetDate.value);
-	         var day = cashOutDate.getDate();
-	         var month = cashOutDate.getMonth() + 1; 
-			 var year = cashOutDate.getFullYear();
-			 var cashoutDateAlt=day + "/" + month + "/" + year;
-			 date.textContent="by "+cashoutDateAlt;
+			 var cashOutDate=new Date(targetDate.value);
 			 var dateDifference=cashOutDate - currentDate;
 			 var res = Math.abs(dateDifference) / 1000;
 			 var elapsedDays = (Math.floor(res / 86400))+1;
 			 var elapsedMonths=Math.round(elapsedDays/28);
-			 var target=parseInt(targetAmount.value)
+			 var target=parseInt(targetAmount.value);
 			 var dailyAmount=(target/elapsedDays).toFixed(2);
 			 var monthlyAmount=target/elapsedMonths;
 			 var savingFreq=parseInt(targetFrequency.value);
-			 goal.textContent=target;
+			 goal.textContent="N" + target;
+			 date.textContent="by "+ formatDate(cashOutDate);
+
+			 if(isNaN(target)){
+                targeterror.textContent="Enter a valid amount"
+			 }
 			 
-			 if(savingFreq===1){
+			 else if(savingFreq===1){
 			  sf.textContent="You need to save daily";
 			  targeterror.textContent="";
-			  savings.textContent=dailyAmount;
+			  savings.textContent="N"+dailyAmount;
 			  targetResult.classList.add("visible");
 			  targetResult.classList.remove("hidden");
 			  saveNow.textContent = "SAVE N" + target + " NOW!";
@@ -198,7 +212,7 @@ closetargetResult.addEventListener("click", closetargetOutput);
 				 else{
 					sf.textContent="You need to save monthly";
 					targeterror.textContent="";
-					savings.textContent=monthlyAmount;
+					savings.textContent="N"+monthlyAmount;
 				    targetResult.classList.add("visible");
 			        targetResult.classList.remove("hidden");
 			        saveNow.textContent = "SAVE N" + target + " NOW!";
